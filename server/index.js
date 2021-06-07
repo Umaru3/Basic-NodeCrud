@@ -14,6 +14,18 @@ const db = mysql.createConnection({ //db connection
     database: 'mysql',
 });
 
+app.get('/viewPeople', (req,res) => {//get all people's name from db table
+
+    db.query("SELECT * FROM simplecrudtable",(err,result) =>{
+
+        if(err){
+            console.log(err);
+        }else{
+            res.send(result);
+        }
+    });
+});
+
 app.listen(3090, () => {
     console.log("Connected! Server Running.");
 })
